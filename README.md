@@ -1,3 +1,6 @@
+BuiltDaily
+Video Demo: https://youtu.be/qEEKb1Kk09E
+
 Hi! My name is Wesley Tay. I am 21 years old and I am from Singapore. I created a fitness website called BuiltDaily to track a user's daily workout and nutritional intake, which was completed as of 20th April 2025.
 
 I did it as a project with the purpose of challenging my programming skills and also making something that I could frequently come back to and use as I struggle to keep track of my workouts and daily nutrition. I wanted a website that could make workout, weight, and nutritional tracking to be convenient and hosted all in one place, along with a feature to monitor and visualise my progress.Hence, BuiltDaily was created. Through this project, I have incorporated Flask framework for greater exposure to full-stack development, Python, SQLite for databases, HTML, tailwindcss for styling the front end, JavaScript, and Chart.JS for data visualisation. Through working on this project, I gained hands-on experience not only with backend and frontend development but also in user experience, database design, and security practices.
