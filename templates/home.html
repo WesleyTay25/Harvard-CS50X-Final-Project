@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div class="w-1/3 mx-auto py-10 flex justify-center border border-black bg-white rounded-lg shadow-xl ring-1 mt-5">
+    <div class="w-full text-center">
+        <h1>Hi <b>{{name}}</b> you are logged in!</h1>
+        <h2>Your Basic Metabolism Rate is <b>{{BMR}} calories</b> a day</h2>
+        <h2>To reach your desired weight, you need to eat <b>{{calorie}} calories</b> a day!</h2>
+        <h2>To gain muscle, you need to eat <b>{{protein}} grams</b> of protein a day!</h2>
+        {% for profile in profile %}
+        <p class="mt-7">Weight: {{profile.weight}}kg | Goal: {{profile.goal}}kg | Height: {{profile.height}}m | Age: {{profile.age}} | Gender: {{profile.gender}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+
+<div class = "mt-10 flex justify-center">
+<label class="mt-2 text-center text-xl/9 font-bold tracking-tight text-gray-900">Calorie intake</label>
+<canvas id= "calorie" width = "900" height = "400"></canvas>
+<script>
+    const labels = {{ days_label | tojson }};
+    const data = {{ calories_total | tojson }};
+    const limit = {{ calorielimit | tojson }};
+
+    const backgroundColors = data.map(value => value > limit ? "red" : "blue");
+
+    const ctx = document.getElementById("calorie").getContext("2d");
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Calories Consumed',
+                    data: data,
+                    backgroundColor: backgroundColors
+                },
+                {
+                    label: 'Calorie Limit',
+                    data: Array(labels.length).fill(limit),
+                    type: 'line',
+                    borderColor: 'green',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Calories'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Day of Week'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                }
+            }
+        }
+    });
+</script>
+</div>
+
+
+<div class = "mt-10 flex justify-center">
+<label class="mt-2 mx-10 text-center text-xl/9 font-bold tracking-tight text-gray-900">Weight</label>
+<canvas id="weightChart"  width = "900" height = "400"></canvas>
+    <script>
+        const Wlabels = {{ labels | tojson }};
+        const weights = {{ weights | tojson }};
+        const goal = {{ goal | tojson }};
+
+        const ctx2 = document.getElementById("weightChart").getContext("2d");
+
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: Wlabels,
+                datasets: [
+                    {
+                        label: "Weight (kg)",
+                        data: weights,
+                        borderColor: "blue",
+                        backgroundColor: "blue",
+                        fill: false,
+                        tension: 0.1,
+                        spanGaps: true
+                    },
+                    {
+                        label: "Goal Weight",
+                        data: Array(31).fill(goal),
+                        borderColor: "green",
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: goal - 5,
+                        max: goal + 5,
+                        title: {
+                              display: true,
+                              text: 'Weight'
+                            }
+                    },
+                    x: {
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}

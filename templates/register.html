@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div>
+        <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Register your account</h2>
+    </div>
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form class="space-y-6" action="/register" method="POST">
+            <div class="mt-2">
+                <input class="block w-full border border-black p-2 rounded" type="text" name="username" autocomplete="off" required placeholder="Username">
+            </div>
+            <div class="mt-2">
+                <input class="block w-full border border-black p-2 rounded" type="email" name="email" autocomplete="off" required placeholder="Email">
+            </div>
+            <div class="mt-2">
+                <input class="block w-full border border-black p-2 rounded" type="password" name="password" autocomplete="off" required placeholder="Password">
+            </div>
+            <div class="mt-2">
+                <input class="block w-full border border-black p-2 rounded" type="password" name="confirmation" autocomplete="off" required placeholder="Confirm password">
+            </div>
+            <div>
+                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-white shadow-xs">Sign in</button>
+              </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
